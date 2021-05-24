@@ -2,5 +2,5 @@
 
 
 ```
-gcloud builds submit s
+gcloud builds submit 
 ```
