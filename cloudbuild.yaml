@@ -1,0 +1,14 @@
+steps:
+# Build the container image
+- name: 'gcr.io/cloud-builders/docker'
+  args: ['build', '-t', 'gcr.io/cliu201/node2cloudrun', '.']
+# Push the container image to Container Registry
+- name: 'gcr.io/cloud-builders/docker'
+  args: ['push', 'gcr.io/cliu201/node2cloudrun']
+# Deploy container image to Cloud Run
+- name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
+  entrypoint: gcloud
+  args: ['run', 'deploy', 'cloudrun-node-test', '--image', 'gcr.io/cliu201/node2cloudrun', 
+  '--region', 'us-central1', '--platform', 'managed', '--allow-unauthenticated', '--port=8080'] 
+images:
+- gcr.io/cliu201/node2cloudrun
