@@ -9,6 +9,7 @@ steps:
 - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
   entrypoint: gcloud
   args: ['run', 'deploy', 'cloudrun-node-test', '--image', 'gcr.io/cliu201/node2cloudrun', 
-  '--region', 'us-central1', '--platform', 'managed', '--allow-unauthenticated', '--port=8080'] 
+  '--region', 'us-central1', '--platform', 'managed', '--allow-unauthenticated', '--port=8080',
+  '--service-account=cliu201-sa@cliu201.iam.gserviceaccount.com'] 
 images:
 - gcr.io/cliu201/node2cloudrun
